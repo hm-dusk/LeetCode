@@ -7,7 +7,7 @@ import java.util.List;
  * @date Created in 2017/11/24 16:00
  */
 public class Easy {
-	//1,21,191,226,345,367,443,448,476,557,657
+	//1,21,191,226,345,367,415,443,448,476,557,657
 
 	/**
 	 * 1
@@ -152,6 +152,38 @@ public class Easy {
 /////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * 415
+	 */
+	public String addStrings(String num1, String num2) {
+		if (num1.length() < num2.length()) {
+			String temp = num1;
+			num1 = num2;
+			num2 = temp;
+		}
+
+		char[] n1 = num1.toCharArray(), n2 = num2.toCharArray();
+		int flag = 0;
+		for (int i = 0; i < n1.length; i++) {
+			int a = n1[n1.length - 1 - i] - '0' + flag;
+			if (i < n2.length) {
+				a += (n2[n2.length - 1 - i] - '0');
+			}
+			if (a >= 10) {
+				n1[n1.length - 1 - i] = (char) ('0' + a - 10);
+				flag = 1;
+			} else {
+				n1[n1.length - 1 - i] = (char) ('0' + a);
+				flag = 0;
+			}
+		}
+		if (1 == flag) {
+			return "1" + String.valueOf(n1);
+		}
+		return String.valueOf(n1);
+	}
+/////////////////////////////////////////////////////////////////////////
+
+	/**
 	 * 443
 	 */
 	public int compress(char[] chars) {
@@ -259,6 +291,7 @@ public class Easy {
 		}
 		return x == 0 && y == 0;
 	}
+/////////////////////////////////////////////////////////////////////////
 
 
 	public static void main(String[] args) {
