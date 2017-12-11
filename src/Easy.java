@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,11 +8,9 @@ import java.util.List;
  * @date Created in 2017/11/24 16:00
  */
 public class Easy {
-	//1,21,191,226,345,367,415,443,448,476,557,657
+	//1,21,191,206,217,226,345,367,415,443,448,476,557,657
 
-	/**
-	 * 1
-	 */
+	/******************************** 1 ************************************/
 	public int[] twoSum(int[] nums, int target) {
 		for (int i = 0; i < nums.length - 1; i++) {
 			for (int j = i + 1; j < nums.length; j++) {
@@ -22,11 +21,8 @@ public class Easy {
 		}
 		throw new IllegalArgumentException();
 	}
-/////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 21
-	 */
+	/******************************** 21 ************************************/
 	public class ListNode {
 		int val;
 		ListNode next;
@@ -36,9 +32,6 @@ public class Easy {
 		}
 	}
 
-	/**
-	 * 21
-	 */
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 		ListNode preHead = new ListNode(-1);
 
@@ -57,11 +50,25 @@ public class Easy {
 		pre.next = l1 == null ? l2 : l1;
 		return preHead.next;
 	}
-/////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 191
-	 */
+	/******************************** 168 ************************************/
+	public String convertToTitle(int n) {
+//		String s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//		char[] ss = s.toCharArray();
+//		if (n <= 26) {
+//			return String.valueOf(ss[n - 1]);
+//		} else {
+//			String result = "";
+//			int a = n / 26;
+//			for (int i = 0; i < a; i++) {
+//				result += "A";
+//			}
+//			return result + String.valueOf(ss[n % 26 - 1]);
+//		}
+		return "";
+	}
+
+	/******************************** 191 ************************************/
 	public int hammingWeight(int n) {
 		int count = 0;
 		char[] a = Integer.toBinaryString(n).toCharArray();
@@ -72,11 +79,27 @@ public class Easy {
 		}
 		return count;
 	}
-/////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 226
-	 */
+	/******************************** 206 ************************************/
+	public ListNode reverseList(ListNode head) {
+		ListNode prev = null;
+		ListNode curr = head;
+		while (curr != null) {
+			ListNode nextTemp = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = nextTemp;
+		}
+		return prev;
+	}
+
+	/******************************** 217 ************************************/
+	public boolean containsDuplicate(int[] nums) {
+		long l = Arrays.stream(nums).distinct().count();
+		return nums.length > l;
+	}
+
+	/******************************** 226 ************************************/
 	private class TreeNode {
 		int val;
 		TreeNode left;
@@ -87,9 +110,6 @@ public class Easy {
 		}
 	}
 
-	/**
-	 * 226
-	 */
 	public TreeNode invertTree(TreeNode root) {
 		if (root == null) {
 			return null;
@@ -100,11 +120,14 @@ public class Easy {
 		root.right = left;
 		return root;
 	}
-/////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 345
-	 */
+	/******************************** 237 ************************************/
+	public void deleteNode(ListNode node) {
+		node.val = node.next.val;
+		node.next = node.next.next;
+	}
+
+	/******************************** 345 ************************************/
 	public String reverseVowels(String s) {
 		char[] chars = s.toCharArray();
 		List<Integer> index = new ArrayList<>();
@@ -126,18 +149,12 @@ public class Easy {
 		return sb.toString();
 	}
 
-	/**
-	 * 345
-	 */
 	private boolean isYuan(char a) {
 		return a == 'a' || a == 'e' || a == 'i' || a == 'o' || a == 'u'
 				|| a == 'A' || a == 'E' || a == 'I' || a == 'O' || a == 'U';
 	}
-/////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 367
-	 */
+	/******************************** 367 ************************************/
 	public boolean isPerfectSquare(int num) {
 		if (num == 1) {
 			return true;
@@ -149,11 +166,8 @@ public class Easy {
 		}
 		return false;
 	}
-/////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 415
-	 */
+	/******************************** 415 ************************************/
 	public String addStrings(String num1, String num2) {
 		if (num1.length() < num2.length()) {
 			String temp = num1;
@@ -181,11 +195,8 @@ public class Easy {
 		}
 		return String.valueOf(n1);
 	}
-/////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 443
-	 */
+	/******************************** 443 ************************************/
 	public int compress(char[] chars) {
 		int anchor = 0, write = 0;
 		for (int read = 0; read < chars.length; read++) {
@@ -201,11 +212,8 @@ public class Easy {
 		}
 		return write;
 	}
-/////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 448
-	 */
+	/******************************** 448 ************************************/
 	public List<Integer> findDisappearedNumbers(int[] nums) {
 		List<Integer> ret = new ArrayList<>();
 
@@ -223,11 +231,8 @@ public class Easy {
 		}
 		return ret;
 	}
-/////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 476
-	 */
+	/******************************** 476 ************************************/
 	public int findComplement(int num) {
 		String n = Integer.toBinaryString(num);
 		n = n.replaceAll("1", "2");
@@ -235,11 +240,8 @@ public class Easy {
 		n = n.replaceAll("2", "0");
 		return Integer.valueOf(n, 2);
 	}
-/////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 557
-	 */
+	/******************************** 557 ************************************/
 	public String reverseWords(String s) {
 		String[] arr = s.split(" ");
 		String[] arr2 = new String[arr.length];
@@ -262,11 +264,8 @@ public class Easy {
 		}
 		return result.substring(0, result.length() - 1);
 	}
-/////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 657
-	 */
+	/******************************** 657 ************************************/
 	public boolean judgeCircle(String moves) {
 		char[] move = moves.toCharArray();
 		int x = 0;
@@ -291,7 +290,8 @@ public class Easy {
 		}
 		return x == 0 && y == 0;
 	}
-/////////////////////////////////////////////////////////////////////////
+
+	/********************************   ************************************/
 
 
 	public static void main(String[] args) {
