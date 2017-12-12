@@ -1,3 +1,5 @@
+package te;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,7 +10,7 @@ import java.util.List;
  * @date Created in 2017/11/24 16:00
  */
 public class Easy {
-	//1,21,191,206,217,226,345,367,415,443,448,476,557,657
+	//1,21,191,206,217,226,242,345,367,415,443,448,476,557,657
 
 	/******************************** 1 ************************************/
 	public int[] twoSum(int[] nums, int target) {
@@ -125,6 +127,24 @@ public class Easy {
 	public void deleteNode(ListNode node) {
 		node.val = node.next.val;
 		node.next = node.next.next;
+	}
+
+	/******************************** 242 ************************************/
+	public boolean isAnagram(String s, String t) {
+		if (s.length() != t.length()) {
+			return false;
+		}
+		int[] table = new int[26];
+		for (int i = 0; i < s.length(); i++) {
+			table[s.charAt(i) - 'a']++;
+		}
+		for (int i = 0; i < t.length(); i++) {
+			table[t.charAt(i) - 'a']--;
+			if (table[t.charAt(i) - 'a'] < 0) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/******************************** 345 ************************************/
